@@ -4,6 +4,16 @@
 #include <fstream>
 #include <regex>
 #include <string>
+#include <iostream>
+
+#define MEM_TOTAL "MemTotal:"
+#define MEM_FREE "MemFree:"
+#define CPU "cpu"
+#define PROCESSES "processes"
+#define PROCS_RUNNING "procs_running"
+#define VM_SIZE "VmSize:"
+#define UID "Uid:"
+#define UP_TIME_POS 21
 
 namespace LinuxParser {
 // Paths
@@ -45,6 +55,10 @@ long Jiffies();
 long ActiveJiffies();
 long ActiveJiffies(int pid);
 long IdleJiffies();
+
+long CalculeteJiffies(int iniPos, int endPos);
+int GetKeyInStat(std::string key);
+std::string GetValueStatus(int pid, std::string key);
 
 // Processes
 std::string Command(int pid);
